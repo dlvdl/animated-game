@@ -4,6 +4,8 @@ export class Player {
         this.collisionX = this.game.width * 0.5;
         this.collisionY = this.game.height * 0.5;
         this.collisionRadius = 30;
+        this.speedX = 0;
+        this.speedY = 0;
     }
 
     draw(context) {
@@ -14,5 +16,16 @@ export class Player {
         context.fill();
         context.restore();
         context.stroke();
+        context.beginPath();
+        context.moveTo(this.collisionX, this.collisionY);
+        context.lineTo(this.game.mouse.x, this.game.mouse.y);
+        context.stroke();
+    }
+
+    update() {
+        this.speedX = 1;
+        this.speedY = 1;
+        this.collisionX = this.game.mouse.x;
+        this.collisionY = this.game.mouse.y;
     }
 }

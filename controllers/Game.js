@@ -32,5 +32,6 @@ export class Game {
 
     render(context) {
         this.player.draw(context);
+        this.player.update();
     }
 }

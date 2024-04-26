@@ -7,7 +7,7 @@ export class Game {
         this.width = canvas.width;
         this.height = canvas.height;
         this.player = new Player(this);
-        this.numberOfObstacles = 5;
+        this.numberOfObstacles = 10;
         this.obstacles = [];
         this.mouse = {
             x: this.width * 0.5,

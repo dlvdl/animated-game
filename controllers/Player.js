@@ -6,6 +6,9 @@ export class Player {
         this.collisionRadius = 30;
         this.speedX = 0;
         this.speedY = 0;
+        this.dx = 0;
+        this.dy = 0;
+        this.speedModifier = 5;
     }
 
     draw(context) {
@@ -23,9 +26,20 @@ export class Player {
     }
 
     update() {
-        this.speedX = 1;
-        this.speedY = 1;
-        this.collisionX = this.game.mouse.x;
-        this.collisionY = this.game.mouse.y;
+        this.dx = this.game.mouse.x - this.collisionX;
+        this.dy = this.game.mouse.y - this.collisionY;
+
+        const distance = Math.hypot(this.dy, this.dx);
+
+        if (distance > this.speedModifier) {
+            this.speedY = this.dy / distance || 0;
+            this.speedX = this.dx / distance || 0;
+        } else {
+            this.speedY = 0;
+            this.speedX = 0;
+        }
+
+        this.collisionX += this.speedX * this.speedModifier;
+        this.collisionY += this.speedY * this.speedModifier;
     }
 }

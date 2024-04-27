@@ -52,7 +52,7 @@ export class Game {
 
         const distance = Math.hypot(dy, dx);
 
-        return distance < sumOfRadii;
+        return {collision : distance < sumOfRadii, distance, sumOfRadii, dx, dy};
     }
 
     init() {

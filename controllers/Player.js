@@ -44,8 +44,14 @@ export class Player {
 
         // handle collision with obstacles
         this.game.obstacles.forEach((obstacle) => {
-            if (this.game.checkCollision(this, obstacle)) {
-                console.log('collision');
+            const {collision, dx, dy, sumOfRadii, distance} = this.game.checkCollision(this, obstacle);
+
+            if (collision) {
+                const unit_x = dx / distance;
+                const unit_y = dy / distance;
+
+                this.collisionX = obstacle.collisionX + (sumOfRadii + 1) * unit_x;
+                this.collisiony = obstacle.collisionY + (sumOfRadii + 1) * unit_y;
             }
         });
     }

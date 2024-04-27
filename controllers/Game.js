@@ -7,6 +7,9 @@ export class Game {
         this.width = canvas.width;
         this.height = canvas.height;
         this.player = new Player(this);
+        this.topMargin = 260;
+        this.bottomMargin = 100;
+        this.distanceBuffer = 150;
         this.numberOfObstacles = 10;
         this.obstacles = [];
         this.mouse = {
@@ -53,12 +56,28 @@ export class Game {
                 const dy = testObstacle.collisionY - obstacle.collisionY;
 
                 const distance = Math.hypot(dy, dx);
-                const sumOfRadi = testObstacle.collisionRadius + obstacle.collisionRadius;
+                const sumOfRadi = testObstacle.collisionRadius + obstacle.collisionRadius + this.distanceBuffer;
 
                 if (distance < sumOfRadi) {
                     overlap = true;
                 }
             });
+
+            if (testObstacle.spriteX < 0 ) {
+                continue;
+            }
+
+            if (testObstacle.spriteX > this.width - testObstacle.width) {
+                continue;
+            }
+
+            if  (testObstacle.collisionY < this.topMargin) {
+                continue;
+            }
+
+            if (testObstacle.collisionY > this.height - this.bottomMargin) {
+                continue;
+            }
 
             if (!overlap) {
                 this.obstacles.push(testObstacle);

@@ -14,7 +14,8 @@ export class Player {
         this.spriteHeight = 255;
         this.height = this.spriteHeight;
         this.width = this.spriteWidth;
-        this.spriteX;
+        this.spriteX = 0;
+        this.spriteY = 0;
     }
 
     draw(context) {

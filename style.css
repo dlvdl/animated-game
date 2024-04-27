@@ -17,6 +17,6 @@
     transform: translate(-50%, -50%);
     pointer-events: none;
 }
-#obstacle {
+#obstacle, #bull {
     display: none;
 }

@@ -17,6 +17,7 @@ export class Game {
             y: this.height * 0.5,
             pressed: false
         }
+        this.debug = true;
 
         canvas.addEventListener('mousedown', e => {
             this.mouse.x = e.offsetX;
@@ -34,6 +35,12 @@ export class Game {
             if (this.mouse.pressed) {
                 this.mouse.x = e.offsetX;
                 this.mouse.y = e.offsetY;
+            }
+        });
+
+        window.addEventListener('keydown', e => {
+            if (e.code === 'KeyD') {
+                this.debug = !this.debug;
             }
         });
     }

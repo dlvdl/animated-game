@@ -86,6 +86,24 @@ export class Player {
         this.collisionX += this.speedX * this.speedModifier;
         this.collisionY += this.speedY * this.speedModifier;
 
+        // horizontal boundaries
+        if (this.collisionX < this.collisionRadius) {
+            this.collisionX = this.collisionRadius;
+        }
+
+        if (this.collisionX > this.game.width - this.collisionRadius) {
+            this.collisionX = this.game.width - this.collisionRadius;
+        }
+
+        // vertical boundaries
+        if (this.collisionY < this.game.topMargin + this.collisionRadius) {
+            this.collisionY = this.game.topMargin + this.collisionRadius;
+        }
+
+        if (this.collisionY > this.game.height - this.collisionRadius) {
+            this.collisionY = this.game.height - this.collisionRadius;
+        }
+
         // align sprite position against cursor
         this.spriteX = this.collisionX - this.width * 0.5;
         this.spriteY = this.collisionY - this.height * 0.5 - 100;

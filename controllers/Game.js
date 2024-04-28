@@ -9,7 +9,7 @@ export class Game {
         this.player = new Player(this);
         this.topMargin = 260;
         this.bottomMargin = 100;
-        this.distanceBuffer = 150;
+        this.distanceBuffer = 180;
         this.numberOfObstacles = 10;
         this.obstacles = [];
         this.mouse = {
